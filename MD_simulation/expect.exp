@@ -1,0 +1,25 @@
+
+#  $batch '$destination path on high-performance computer' login.hpc.imperial.ac.uk '$account' '$password'
+
+set timeout 20
+
+set sourcefolder [lindex $argv 0]
+
+set destinationpath [lindex $argv 1]
+
+set ip [lindex $argv 2]
+
+set user [lindex $argv 3]
+
+set password [lindex $argv 4]
+
+spawn scp -r $sourcefolder $user@$ip:$destinationpath 
+
+expect "assword:"
+
+send "$password\r";
+
+interact
+
+
+
